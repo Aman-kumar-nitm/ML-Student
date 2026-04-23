@@ -3,8 +3,7 @@ seaborn
 pandas
 matplotlib
 scikit-learn
-catboost
-xgboost
+
 dill
 Flask
 # -e .

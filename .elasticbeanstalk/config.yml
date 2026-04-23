@@ -1,0 +1,5 @@
+branch-defaults:
+  main:
+    environment: Student-Performance-Analyzer-env
+global:
+  profile: eb-cli
