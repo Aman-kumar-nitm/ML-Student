@@ -1,0 +1,98 @@
+/* Reset + base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.login {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 16px;
+    width: 420px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Title */
+.login h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #f9fafb;
+}
+
+/* Labels */
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* Inputs & Select */
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #1f2933;
+    background-color: #020617;
+    color: #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+/* Focus effect */
+.form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+/* Dropdown */
+select.form-control {
+    cursor: pointer;
+}
+
+/* Spacing */
+.mb-3 {
+    margin-bottom: 18px;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Button hover */
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+}
+
+/* Result text */
+h2 {
+    margin-top: 20px;
+    text-align: center;
+    color: #22c55e;
+    font-size: 18px;
+}
