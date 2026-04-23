@@ -40,11 +40,68 @@ class ModelTrainer:
                 "Lasso":Lasso()
                 
             }
-            model_report:dict=evaluate_model(X_train,Y_train,X_test,Y_test,models)
-            best_model_score=max(sorted(model_report.values()))
-            best_model_name=list(model_report.keys())[list(model_report.values()).index(best_model_score)]
+            param_distributions = {
 
-            best_model=models[best_model_name]
+            "Random Forest": {
+                "n_estimators": [100, 200, 300, 500],
+                "max_depth": [None, 10, 20, 30],
+                "min_samples_split": [2, 5, 10],
+                "min_samples_leaf": [1, 2, 4],
+                "max_features": ["sqrt", "log2"]
+            },
+
+            "Decision Tree": {
+                "criterion": ["squared_error", "friedman_mse"],
+                "max_depth": [None, 10, 20, 30],
+                "min_samples_split": [2, 5, 10],
+                "min_samples_leaf": [1, 2, 4]
+            },
+
+            "KNN": {
+                "n_neighbors": [3, 5, 7, 9, 11],
+                "weights": ["uniform", "distance"],
+                "metric": ["euclidean", "manhattan", "minkowski"]
+            },
+
+            "Adaboost": {
+                "n_estimators": [50, 100, 200],
+                "learning_rate": [0.01, 0.1, 1.0],
+                "loss": ["linear", "square", "exponential"]
+            },
+
+            "SVM": {
+                "kernel": ["linear", "rbf", "poly"],
+                "C": [0.1, 1, 10, 100],
+                "epsilon": [0.01, 0.1, 0.2],
+                "gamma": ["scale", "auto"]
+            },
+
+            "Linear Regression": {
+             # No major hyperparameters
+            "fit_intercept": [True, False]
+            },
+
+            "Ridge": {
+                "alpha": [0.01, 0.1, 1.0, 10, 100],
+                "solver": ["auto", "svd", "cholesky", "lsqr"]
+            },
+
+            "Lasso": {
+                "alpha": [0.001, 0.01, 0.1, 1.0, 10],
+                "selection": ["cyclic", "random"]
+            }
+            }
+
+            model_report, trained_models = evaluate_model(
+            X_train, Y_train, X_test, Y_test, models, params=param_distributions
+            )
+            
+            best_model_name = max(model_report, key=model_report.get)
+            best_model_score = model_report[best_model_name]
+
+            best_model = trained_models[best_model_name]
+
+            
             if best_model_score<0.6:
                 raise CustomException("No best Model found",sys)
             
